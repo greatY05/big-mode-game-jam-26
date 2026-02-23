@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://o0fq8s6gh7aq"]
+
+[ext_resource type="Script" uid="uid://btu3yftujmdwm" path="res://generic_enemy.gd" id="1_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://em3qcldpa4kl" path="res://enemy.png" id="2_4gyqm"]
+[ext_resource type="AudioStream" uid="uid://btv8mgx7h3atr" path="res://sounds/enemy_hit.wav" id="3_iifgy"]
+[ext_resource type="AudioStream" uid="uid://c5e2i1o7qjykt" path="res://sounds/enemy_shoot.wav" id="4_epg4t"]
+[ext_resource type="AudioStream" uid="uid://xm7hbc1fxkod" path="res://sounds/enemy_disappear.wav" id="5_epg4t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m7jmp"]
+radius = 37.01351
+
+[node name="enemy" type="Area2D" unique_id=547259455]
+collision_layer = 2
+script = ExtResource("1_4gyqm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=894439563]
+shape = SubResource("CircleShape2D_m7jmp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=754368380]
+position = Vector2(0.99998283, 0.4999962)
+scale = Vector2(0.43750027, 0.46093744)
+texture = ExtResource("2_4gyqm")
+
+[node name="bullet_spawn" type="Marker2D" parent="." unique_id=520263871]
+position = Vector2(0, 37)
+
+[node name="shooting_timer" type="Timer" parent="." unique_id=499609183 groups=["enemy"]]
+wait_time = 4.0
+autostart = true
+
+[node name="check_border_right" type="RayCast2D" parent="." unique_id=1138459567]
+target_position = Vector2(200, 0)
+collision_mask = 129
+
+[node name="check_border_left" type="RayCast2D" parent="." unique_id=2093486251]
+target_position = Vector2(-200, 0)
+collision_mask = 129
+
+[node name="sounds" type="Node2D" parent="." unique_id=324202857]
+
+[node name="EnemyHit" type="AudioStreamPlayer" parent="sounds" unique_id=757125366]
+stream = ExtResource("3_iifgy")
+
+[node name="EnemyShoot" type="AudioStreamPlayer" parent="sounds" unique_id=2147209375]
+stream = ExtResource("4_epg4t")
+
+[node name="EnemyDisappear" type="AudioStreamPlayer" parent="sounds" unique_id=680465365]
+stream = ExtResource("5_epg4t")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="shooting_timer" to="." method="_on_shooting_timer_timeout"]

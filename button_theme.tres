@@ -1,0 +1,14 @@
+[gd_resource type="Theme" format=3 uid="uid://lygy47y5yaxd"]
+
+[ext_resource type="Texture2D" uid="uid://cfbk72qkgl3hr" path="res://button.png" id="1_jjpe7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hillf"]
+texture = ExtResource("1_jjpe7")
+modulate_color = Color(0.7152409, 0.7470902, 1, 1)
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxTexture_hillf")
+Button/styles/focus = SubResource("StyleBoxTexture_hillf")
+Button/styles/hover = SubResource("StyleBoxTexture_hillf")
+Button/styles/normal = SubResource("StyleBoxTexture_hillf")
+Button/styles/pressed = SubResource("StyleBoxTexture_hillf")

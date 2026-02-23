@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://b3looqgfb7j8a"]
+
+[ext_resource type="Theme" uid="uid://lygy47y5yaxd" path="res://button_theme.tres" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://tjnw6op705tt" path="res://main_menu.gd" id="1_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://x46hvys4g8nw" path="res://banner-menu-bg.png" id="3_glbon"]
+[ext_resource type="Texture2D" uid="uid://dvvr84g6oowc" path="res://banner-stand.png" id="4_nlkkf"]
+[ext_resource type="Texture2D" uid="uid://bgn105b8d3106" path="res://banner-title.png" id="5_nlkkf"]
+[ext_resource type="Texture2D" uid="uid://bljumkkv1b4rh" path="res://banner-guy.png" id="5_qe12f"]
+
+[node name="main_menu" type="Control" unique_id=1605269442]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7vrkn")
+
+[node name="blackout" type="ColorRect" parent="." unique_id=978606220]
+z_index = 2
+layout_mode = 0
+offset_left = -9.0
+offset_top = -3.0
+offset_right = 969.0
+offset_bottom = 757.0
+color = Color(0, 0, 0, 0)
+
+[node name="BannerMenuBg" type="Sprite2D" parent="." unique_id=1157138080]
+position = Vector2(480.00003, 370.5)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("3_glbon")
+
+[node name="BannerStand" type="Sprite2D" parent="." unique_id=153121725]
+z_index = 1
+position = Vector2(420, 664)
+texture = ExtResource("4_nlkkf")
+
+[node name="BannerGuy" type="Sprite2D" parent="." unique_id=963274483]
+z_index = 1
+position = Vector2(413, 577)
+texture = ExtResource("5_qe12f")
+
+[node name="BannerTitle" type="Sprite2D" parent="." unique_id=854468075]
+position = Vector2(639, 200.99998)
+scale = Vector2(1.5992063, 1.5992063)
+texture = ExtResource("5_nlkkf")
+
+[node name="buttons" type="Control" parent="." unique_id=1514622128]
+anchors_preset = 0
+offset_left = -315.0
+offset_top = 458.0
+offset_right = -275.0
+offset_bottom = 498.0
+
+[node name="play" type="Button" parent="buttons" unique_id=1084611459]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 54.0
+offset_right = 644.0
+offset_bottom = 124.0
+pivot_offset = Vector2(-129, 203)
+theme = ExtResource("1_06t4h")
+text = "START"
+
+[node name="exit" type="Button" parent="buttons" unique_id=408683986]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 145.0
+offset_right = 644.0
+offset_bottom = 215.0
+theme = ExtResource("1_06t4h")
+text = "QUIT"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=517008056]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 245.0
+offset_right = 405.0
+offset_bottom = 422.0
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[wave]DEFEAT ENEMY
+WAVES BY
+REACHING HIGH SCORES!"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=1724271752]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 576.0
+offset_right = 906.0
+offset_bottom = 753.0
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[wave]HIT BALLS BACK
+AT THE ENEMIES
+TO DEFEAT THEM!"
+scroll_active = false
+horizontal_alignment = 1
+
+[connection signal="button_up" from="buttons/play" to="." method="_on_play_button_up"]
+[connection signal="button_up" from="buttons/exit" to="." method="_on_exit_button_up"]

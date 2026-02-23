@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bv71tgbu6i1v4"]
+
+[ext_resource type="Script" uid="uid://birg61hv0e2yj" path="res://bullet.gd" id="1_v8qja"]
+[ext_resource type="Texture2D" uid="uid://dkiy8l000snt2" path="res://ball.png" id="2_v8qja"]
+[ext_resource type="AudioStream" uid="uid://b36ug6htbwa44" path="res://sounds/break_out.mp3" id="3_t4vbm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v8qja"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v8qja"]
+radius = 27.018513
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t4vbm"]
+radius = 47.169907
+
+[node name="bullet" type="RigidBody2D" unique_id=2708771 groups=["hittable"]]
+physics_material_override = SubResource("PhysicsMaterial_v8qja")
+script = ExtResource("1_v8qja")
+
+[node name="bullet_area" type="Area2D" parent="." unique_id=643219124]
+
+[node name="bullet_coll" type="CollisionShape2D" parent="bullet_area" unique_id=30875478]
+shape = SubResource("CircleShape2D_v8qja")
+
+[node name="bullet_homing_range" type="Area2D" parent="." unique_id=1907291357]
+
+[node name="bullet_homing_coll" type="CollisionShape2D" parent="bullet_homing_range" unique_id=1040774824]
+shape = SubResource("CircleShape2D_t4vbm")
+
+[node name="texture" type="Sprite2D" parent="." unique_id=2122076128]
+position = Vector2(-5.9604645e-08, 1.4901161e-07)
+scale = Vector2(0.085, 0.085)
+texture = ExtResource("2_v8qja")
+
+[node name="bullet_rigid_coll" type="CollisionShape2D" parent="." unique_id=831579087]
+shape = SubResource("CircleShape2D_v8qja")
+
+[node name="BreakOut" type="AudioStreamPlayer" parent="." unique_id=765676404]
+stream = ExtResource("3_t4vbm")
+
+[connection signal="area_entered" from="bullet_homing_range" to="." method="_on_bullet_homing_range_area_entered"]

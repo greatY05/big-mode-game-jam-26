@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dufu4e5xaq172"]
+
+[ext_resource type="Script" uid="uid://cvgksc1llfdmx" path="res://break_window.gd" id="1_sbis3"]
+[ext_resource type="Texture2D" uid="uid://dkiy8l000snt2" path="res://ball.png" id="2_sltwm"]
+
+[node name="break_window" type="Window" unique_id=1122504793]
+transparent_bg = true
+oversampling_override = 1.0
+title = "pop up"
+position = Vector2i(465, 336)
+size = Vector2i(64, 64)
+visible = false
+unresizable = true
+borderless = true
+transparent = true
+unfocusable = true
+popup_window = true
+popup_wm_hint = true
+force_native = true
+script = ExtResource("1_sbis3")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1274559077]
+
+[node name="texture" type="Sprite2D" parent="Camera2D" unique_id=975561372]
+position = Vector2(0, 7.867813e-06)
+scale = Vector2(0.08, 0.081)
+texture = ExtResource("2_sltwm")
